@@ -2,6 +2,7 @@ package com.svr.PractiseJPA.Service;
 
 import com.svr.PractiseJPA.DTO.UserRequest;
 import com.svr.PractiseJPA.DTO.UserResponse;
+import com.svr.PractiseJPA.Entity.Post;
 import com.svr.PractiseJPA.GlobalException.ResourceNotFoundException;
 import com.svr.PractiseJPA.Mapper.UserMapper;
 import com.svr.PractiseJPA.Entity.User;
@@ -24,7 +25,11 @@ public class UserService {
     }
 
     public List<UserResponse> getAllUsers() {
-        return userRepository.findAll().stream().map(userMapper::UserToUserResponse).toList();
+        List<User> list = userRepository.findAll();
+        System.out.println(list.get(0).getPosts());
+        List<UserResponse> userResponse = list.stream().map(userMapper::UserToUserResponse).toList();
+
+        return userResponse;
     }
 
     public UserResponse getSingleUser(int id) throws ResourceNotFoundException {

@@ -23,5 +23,5 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    List<Post> posts;
+    private List<Post> posts;
 }

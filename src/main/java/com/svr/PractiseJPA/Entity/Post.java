@@ -31,7 +31,7 @@ public class Post {
      * Many posts belong to one user.
      * The 'user_id' column will be the foreign key in the 'posts' table.
      */
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(
             name = "user_id",                // FK column in posts table
             nullable = false,
