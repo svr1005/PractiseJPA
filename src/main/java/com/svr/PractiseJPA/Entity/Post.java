@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Entity
@@ -31,12 +30,8 @@ public class Post {
      * Many posts belong to one user.
      * The 'user_id' column will be the foreign key in the 'posts' table.
      */
-    @ManyToOne(optional = false)
-    @JoinColumn(
-            name = "user_id",                // FK column in posts table
-            nullable = false,
-            foreignKey = @ForeignKey(name = "fk_posts_user") // Optional: name the FK constraint
-    )
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 }
